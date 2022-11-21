@@ -51,7 +51,7 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :production do
-  gem "pg", "~> 1.4"
+  gem 'pg', '~> 1.4'
 end
 
 group :development, :test do
@@ -83,3 +83,5 @@ end
 gem 'rollbar', '~> 3.3'
 
 gem 'rubocop', '~> 1.39'
+
+gem "slim-rails", "~> 3.5"
