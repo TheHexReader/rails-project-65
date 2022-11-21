@@ -75,3 +75,5 @@ group :test do
 end
 
 gem "rollbar", "~> 3.3"
+
+gem "rubocop", "~> 1.39"

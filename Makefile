@@ -1,5 +1,5 @@
 run_lint:
-	rubocop -a; slim-lint app/views/
+	rubocop -a
 
 run_test:
 	bundle exec bin/rails test:all
