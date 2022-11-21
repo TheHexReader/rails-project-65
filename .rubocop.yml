@@ -1,0 +1,6 @@
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+  Exclude:
+    - 'bin/*'
