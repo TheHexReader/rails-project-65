@@ -60,6 +60,8 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
+
+  gem 'dotenv-rails', '~> 2.8'
 end
 
 group :development do
@@ -78,10 +80,15 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+
+  gem 'faker', '~> 3.0'
 end
 
 gem 'rollbar', '~> 3.3'
 
 gem 'rubocop', '~> 1.39'
 
-gem "slim-rails", "~> 3.5"
+gem 'slim-rails', '~> 3.5'
+
+gem 'omniauth-github', '~> 2.0'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
