@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title
+      | #{t('bulletin-board')}
+    meta[name='viewport' content='width=device-width, initial-scale=1.0']
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    header
+      = render 'shared/layouts/header'
+    main[style='margin-top: 56px;']
+      - if notice || alert
+        .d-flex.align-items-center.justify-content-center
+          .card.border-dark.shadow.p-1.w-50.m-3.text-center
+            - unless notice.nil?
+              p.notice
+                | #{notice}
+            - unless alert.nil?
+              p.alert
+                | #{alert}
+      = yield

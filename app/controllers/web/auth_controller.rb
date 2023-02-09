@@ -4,16 +4,14 @@ module Web
   # Auth Controller
   class AuthController < ApplicationController
     def callback
-      if User.find_by(permit_hash).nil?
-        User.create(permit_hash)
-        redirect_to root_path
-      end
-    end
+      info = request.env['omniauth.auth'][:info]
 
-    protected
+      user = User.find_by(email: info[:email], name: info[:name])
 
-    def permit_hash
-      request.env['omniauth.auth'].permit(:info)
+      user = User.create(email: info[:email], name: info[:name]) if user.nil?
+
+      session[:user_id] = user.id
+      redirect_to root_path
     end
   end
 end
