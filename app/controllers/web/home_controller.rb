@@ -4,6 +4,8 @@
 module Web
   # Class HomeController
   class HomeController < ApplicationController
-    def index; end
+    def index
+      @bulletins = Bulletin.all.order(created_at: :desc)
+    end
   end
 end

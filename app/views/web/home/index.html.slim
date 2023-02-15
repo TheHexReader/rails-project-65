@@ -1,2 +1,8 @@
 h1
   | Home
+.card.p-3
+  h2
+    | Объявления
+  .row.row-cols-1.row-cols-sm-2.row-cols-md-3.g-3
+    - for bulletin in @bulletins do
+      = render 'web/bulletin/show', bulletin: bulletin

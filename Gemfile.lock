@@ -226,6 +226,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    simple_form (5.2.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -296,6 +299,7 @@ DEPENDENCIES
   rollbar (~> 3.3)
   rubocop (~> 1.39)
   selenium-webdriver
+  simple_form (~> 5.2)
   slim-rails (~> 3.5)
   sprockets-rails
   sqlite3 (~> 1.4)
