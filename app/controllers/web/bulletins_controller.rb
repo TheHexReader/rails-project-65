@@ -1,5 +1,5 @@
 module Web
-  class BulletinController < ApplicationController
+  class BulletinsController < ApplicationController
     def new
       @bulletin = Bulletin.new
     end

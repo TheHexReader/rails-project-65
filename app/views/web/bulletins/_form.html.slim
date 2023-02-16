@@ -4,7 +4,7 @@
     = f.input :title, autofocus: true, placeholder: t('title_placeholder'), required: true, label: false, input_html: { class: 'form-control' }
   .form-group
     = f.label t('description')
-    = f.input :body, as: :text, placeholder: t('post_body_placeholder'), required: true, label: false, input_html: { class: 'form-control' }
+    = f.input :description, as: :text, placeholder: t('bulletin_body_placeholder'), required: true, label: false, input_html: { class: 'form-control' }
   .form-group
     = f.label t('category')
     = f.association :category, label: false, input_html: { class: 'form-control' }
