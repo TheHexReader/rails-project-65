@@ -94,3 +94,5 @@ gem 'omniauth-github', '~> 2.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 gem "simple_form", "~> 5.2"
+
+gem "pundit", "~> 2.3"

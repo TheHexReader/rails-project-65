@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resources :bulletins, only: %i[show new create delete]
+    scope :admin, module: :admin, as: :admin do
+      resources :categories, :bulletins, :users
+    end
   end
 
   get 'profile', to: 'web/profile#index', as: :profile

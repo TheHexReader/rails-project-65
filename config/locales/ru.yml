@@ -7,3 +7,6 @@ ru:
   image: Изображение
   confirm: Подтвердить
   new_bulletin: Новое объявление
+  category_name: Название
+  category_name_placeholder: Название категории
+  edit_category: Редактировать категорию
