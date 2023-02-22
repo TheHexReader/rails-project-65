@@ -10,6 +10,6 @@
     = f.association :category, label: false, input_html: { class: 'form-control' }
   .form-group
     = f.label t('image')
-    = f.file_field :attachments, direct_upload: true, label: false, input_html: { class: 'form-control' , data: { tubro: false } }
+    = f.file_field :image, direct_upload: true, label: false, input_html: { class: 'form-control' , data: { tubro: false } }
   .form-group.d-flex.align-items-center.justify-content-center.m-2
     = f.submit t('confirm'), class: 'btn btn-primary'
