@@ -1,5 +1,7 @@
 module Web
   class BulletinsController < ApplicationController
+    before_action :check_if_user_authorized, only: %i[create new edit update destroy]
+
     def new
       @bulletin = Bulletin.new
     end
@@ -24,6 +26,13 @@ module Web
 
     def bulletin_params
       params.require(:bulletin).permit(:title, :description, :category_id, :image)
+    end
+    
+    def check_if_user_authorized
+      if session[:user_id].nil?
+        flash[:notice] = t('must_be_authorized')
+        redirect_to root_path
+      end
     end
   end
 end
