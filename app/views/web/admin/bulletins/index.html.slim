@@ -1,0 +1,27 @@
+h1 Admin bulletins
+
+= link_to t('create'), new_admin_bulletin_path, class: 'text-decoration-none btn btn-primary'
+
+table.table.table-striped.table-hover.mb-5
+  thead
+    tr
+      th{ scope: :col } = t('title')
+      th{ scope: :col } = t('description')
+      th{ scope: :col } = t('category_id')
+      th{ scope: :col } = t('user_id')
+      th{ scope: :col } = t('created_at')
+      th{ scope: :col } = t('updated_at')
+      th
+
+  tbody
+    - @bulletins.each do |bulletin|
+      tr
+        td = bulletin.title
+        td = bulletin.description
+        td = bulletin.category.name
+        td = bulletin.user.email
+        td = bulletin.created_at
+        td = bulletin.updated_at
+        td.d-flex.flex-row-reverse
+          = button_to t('delete'), admin_bulletin_path(bulletin), method: :delete, class: 'me-3 btn btn-danger'
+          = link_to t('edit'), edit_admin_bulletin_path(bulletin), class: 'text-decoration-none me-3 btn btn-warning'
