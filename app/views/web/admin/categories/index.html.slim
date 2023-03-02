@@ -5,6 +5,7 @@ h1 Admin categories
 table.table.table-striped.table-hover.mb-5
   thead
     tr
+      th{ scope: :col } = t('id')
       th{ scope: :col } = t('name')
       th{ scope: :col } = t('created_at')
       th{ scope: :col } = t('updated_at')
@@ -13,6 +14,7 @@ table.table.table-striped.table-hover.mb-5
   tbody
     - @categories.each do |category|
       tr
+        td = category.id
         td = category.name
         td = category.created_at
         td = category.updated_at

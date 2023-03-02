@@ -2,4 +2,4 @@
   .card
     = image_tag bulletin.image
     h1
-      | #{bulletin.title}
+      =link_to bulletin.title, bulletin_path(bulletin), class: 'text-decoration-none'

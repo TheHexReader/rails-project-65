@@ -1,0 +1,12 @@
+= simple_form_for(admin_user_path) do |f|
+  .form-group
+    = f.label t('user_name')
+    = f.input :name, autofocus: true, placeholder: t('user_name_placeholder'), required: true, label: false, input_html: { class: 'form-control', data: { tubro: false }}
+  .form-group
+    = f.label t('user_email')
+    = f.input :email, placeholder: t('user_email_placeholder'), required: true, label: false, input_html: { class: 'form-control' }
+  .form-group
+    = f.label t('user_admin')
+    = f.input :email, as: :radio_buttons, required: true, label: false, input_html: { class: 'form-control' }
+  .form-group.d-flex.align-items-center.justify-content-center.m-2
+    = f.submit t('confirm'), class: 'btn btn-primary'

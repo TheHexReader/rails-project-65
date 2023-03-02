@@ -5,8 +5,10 @@ h1 Admin users
 table.table.table-striped.table-hover.mb-5
   thead
     tr
+      th{ scope: :col } = t('id')
       th{ scope: :col } = t('name')
       th{ scope: :col } = t('email')
+      th{ scope: :col } = t('admin')
       th{ scope: :col } = t('created_at')
       th{ scope: :col } = t('updated_at')
       th
@@ -14,8 +16,10 @@ table.table.table-striped.table-hover.mb-5
   tbody
     - @users.each do |user|
       tr
+        td = user.id
         td = user.name
         td = user.email
+        td = user.admin
         td = user.created_at
         td = user.updated_at
         td.d-flex.flex-row-reverse

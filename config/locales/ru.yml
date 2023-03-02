@@ -10,3 +10,24 @@ ru:
   category_name: Название
   category_name_placeholder: Название категории
   edit_category: Редактировать категорию
+  user_name: Имя пользователя
+  user_name_placeholder: Имя, Фамилия, Отчество
+  user_email: Почта пользователя
+  user_email_placeholder: some@email.com
+  user_admin: Администратор?
+  edit_user: Редактирование пользователя
+
+  main_page: Главная страница
+  sign_in_github: Войти (Github)
+  profile: Профиль
+  create_bulletin: Создать объявление
+  sign_out: Выйти
+  admin_categories: Админ категории
+  admin_users: Админ пользователи
+  admin_bulletins: Админ объявления
+  signed_in: Успешно вошли в систему
+  signed_out: Успешно вышли из системы
+  bulletin_title: "Название: %{title}"
+  bulletin_description: "Описание: %{description}"
+  bulletin_category: "Категория: %{category}"
+  bulletin_user: "Создал: %{user}"

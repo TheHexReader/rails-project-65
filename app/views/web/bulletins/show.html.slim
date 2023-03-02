@@ -1,5 +1,11 @@
-h1 Bulletin show 
-
-= image_tag @bulletin.image
-p
-  | Id = #{@bulletin.id}
+.d-flex.align-items-center.justify-content-center
+  .card.border-dark.shadow.p-3.w-50.m-3
+    = image_tag @bulletin.image
+    h2
+      | #{t('bulletin_title', title: @bulletin.title)}
+    p
+      | #{t('bulletin_description', description: @bulletin.description)}
+    p
+      | #{t('bulletin_category', category: @bulletin.category.name)}
+    p
+      | #{t('bulletin_user', user: @bulletin.user.email)}

@@ -5,6 +5,7 @@ h1 Admin bulletins
 table.table.table-striped.table-hover.mb-5
   thead
     tr
+      th{ scope: :col } = t('id')
       th{ scope: :col } = t('title')
       th{ scope: :col } = t('description')
       th{ scope: :col } = t('category_id')
@@ -16,6 +17,7 @@ table.table.table-striped.table-hover.mb-5
   tbody
     - @bulletins.each do |bulletin|
       tr
+        td = bulletin.id
         td = bulletin.title
         td = bulletin.description
         td = bulletin.category.name
