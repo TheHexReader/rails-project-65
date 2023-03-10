@@ -5,6 +5,7 @@ module Web
   class ProfileController < ApplicationController
     def index
       @user = User.find_by(id: session[:user_id])
+      @bulletins = @user.bulletins
     end
   end
 end

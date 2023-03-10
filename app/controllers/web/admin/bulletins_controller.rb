@@ -27,10 +27,10 @@ module Web
         @bulletin = Bulletin.find_by(params[:id])
         if @bulletin.delete
           flash[:notice] = t('success')
-          redirect_to admin_bulletin_path
+          redirect_to admin_bulletins_path
         else
           flash[:notice] = t('failure')
-          redirect_to admin_bulletin_path
+          redirect_to admin_bulletins_path
         end
       end
 
@@ -47,6 +47,26 @@ module Web
           flash[:notice] = t('failure')
           redirect_to admin_bulletin_path
         end
+      end
+
+      def archive
+        @bulletin = Bulletin.find_by(id: params[:id]).archive!
+        redirect_to admin_bulletins_path
+      end
+  
+      def moderate
+        @bulletin = Bulletin.find_by(id: params[:id]).moderate!
+        redirect_to admin_bulletins_path
+      end
+  
+      def publish
+        @bulletin = Bulletin.find_by(id: params[:id]).publish!
+        redirect_to admin_bulletins_path
+      end
+  
+      def reject
+        @bulletin = Bulletin.find_by(id: params[:id]).reject!
+        redirect_to admin_bulletins_path
       end
 
       protected

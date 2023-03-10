@@ -10,8 +10,17 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resources :bulletins, only: %i[show new create delete]
+
+    post 'bulletins/:id/archive', to: 'bulletins#archive', as: :archive_bulletin
+    post 'bulletins/:id/moderate', to: 'bulletins#moderate', as: :moderate_bulletin
+
     scope :admin, module: :admin, as: :admin do
       resources :categories, :bulletins, :users
+
+      post 'bulletins/:id/archive', to: 'bulletins#archive', as: :archive_bulletin
+      post 'bulletins/:id/moderate', to: 'bulletins#moderate', as: :moderate_bulletin
+      post 'bulletins/:id/reject', to: 'bulletins#reject', as: :reject_bulletin
+      post 'bulletins/:id/publish', to: 'bulletins#publish', as: :publish_bulletin
     end
   end
 

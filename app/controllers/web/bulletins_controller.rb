@@ -22,12 +22,22 @@ module Web
       @bulletin = Bulletin.find_by(id: params[:id])
     end
 
+    def archive
+      @bulletin = Bulletin.find_by(id: params[:id]).archive!
+      redirect_to profile_path
+    end
+
+    def moderate
+      @bulletin = Bulletin.find_by(id: params[:id]).moderate!
+      redirect_to profile_path
+    end
+
     protected
 
     def bulletin_params
       params.require(:bulletin).permit(:title, :description, :category_id, :image)
     end
-    
+
     def check_if_user_authorized
       if session[:user_id].nil?
         flash[:notice] = t('must_be_authorized')

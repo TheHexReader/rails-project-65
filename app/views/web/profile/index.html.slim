@@ -1,2 +1,41 @@
 h1
   | Profile of user #{@user.email}
+
+h1
+  | Bulletins
+
+= link_to t('create_bulletin'), new_bulletin_path, class: 'btn btn-success'
+
+table.table.table-striped.table-hover.mb-5
+  thead
+    tr
+      th{ scope: :col } = t('title')
+      th{ scope: :col } = t('description')
+      th{ scope: :col } = t('category')
+      th{ scope: :col } = t('created_at')
+      th{ scope: :col } = t('updated_at')
+      th{ scope: :col } = t('status')
+      th
+
+  tbody
+    - @bulletins.each do |bulletin|
+      tr
+        td = bulletin.title
+        td = bulletin.description
+        td = bulletin.category.name
+        td = bulletin.created_at
+        td = bulletin.updated_at
+        td = t(bulletin.aasm_state)
+        td.d-flex
+          .me-1 = link_to t('show'), bulletin, class: 'btn btn-primary'
+
+          - if bulletin.draft?
+            .me-1 = button_to t('moderate'), moderate_bulletin_path(bulletin), method: :post, class: 'btn btn-warning'
+
+          - if bulletin.under_moderation?
+            .me-1 = button_to t('reject'), reject_bulletin_path(bulletin), method: :post, class: 'btn btn-danger'
+            .me-1 = button_to t('publish'), publish_bulletin_path(bulletin), method: :post, class: 'btn btn-success'
+
+          - unless bulletin.archived?
+            .me-1 = button_to t('archive'), archive_bulletin_path(bulletin), method: :post, class: 'btn btn-warning'
+
