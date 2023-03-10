@@ -16,7 +16,6 @@ ru:
   user_email_placeholder: some@email.com
   user_admin: Администратор?
   edit_user: Редактирование пользователя
-
   main_page: Главная страница
   sign_in_github: Войти (Github)
   profile: Профиль
@@ -31,3 +30,25 @@ ru:
   bulletin_description: "Описание: %{description}"
   bulletin_category: "Категория: %{category}"
   bulletin_user: "Создал: %{user}"
+  created_at: Созданно в
+  updated_at: Обновленно в
+  status: Статус
+  draft: Черновик
+  under_moderation: На модерации
+  published: Опубликованно
+  rejected: Отказанно
+  archived: Архивированно
+  profile_of_user: "Профиль пользователя %{user}"
+  bulletins: Объявления
+  name: Название
+  id: ID
+  create: Создать
+  edit: Редактировать
+  show: Показать
+  delete: Удалить
+  success: Успешно
+  failure: Ошибка
+  archive: Архивировать
+  moderate: Отправить на модерацию
+  publish: Опубликовать
+  reject: Отказать

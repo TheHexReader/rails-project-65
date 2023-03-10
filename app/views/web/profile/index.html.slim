@@ -1,8 +1,8 @@
 h1
-  | Profile of user #{@user.email}
+  | #{t('profile_of_user', user: @user.email)}
 
 h1
-  | Bulletins
+  | #{t('bulletins')}
 
 = link_to t('create_bulletin'), new_bulletin_path, class: 'btn btn-success'
 
