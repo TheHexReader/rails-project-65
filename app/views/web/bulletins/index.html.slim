@@ -2,5 +2,8 @@
   h2
     | Объявления
   .row.row-cols-1.row-cols-sm-2.row-cols-md-3.g-3
+    = render 'web/bulletins/search_form'
     - for bulletin in @bulletins do
       = render 'web/bulletins/bulletin', bulletin: bulletin
+
+  = paginate @bulletins

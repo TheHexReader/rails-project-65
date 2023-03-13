@@ -1,5 +1,8 @@
 .col
   .card
-    = image_tag bulletin.image
+    - if bulletin.image.attached?
+      = image_tag bulletin.image
+    - else
+      = image_tag('default-image.jpg')
     h1
       =link_to bulletin.title, bulletin_path(bulletin), class: 'text-decoration-none'

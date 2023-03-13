@@ -29,6 +29,16 @@ class Bulletin < ApplicationRecord
 
   has_one_attached :image
 
+  paginates_per 30
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[aasm_state category_id created_at description id title updated_at user_id]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[category image_attachment image_blob user]
+  end
+
   # validates :image, attached: true,
   #                   content_type: %i[png jpg jpeg],
   #                   size: { less_than: 5.megabytes }

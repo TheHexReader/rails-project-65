@@ -1,6 +1,9 @@
 .d-flex.align-items-center.justify-content-center
   .card.border-dark.shadow.p-3.w-50.m-3
-    = image_tag @bulletin.image
+    - if @bulletin.image.attached?
+      = image_tag @bulletin.image
+    - else
+      = image_tag('default-image.jpg')
     h2
       | #{t('bulletin_title', title: @bulletin.title)}
     p

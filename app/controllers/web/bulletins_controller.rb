@@ -2,6 +2,11 @@ module Web
   class BulletinsController < ApplicationController
     before_action :check_if_user_authorized, only: %i[create new edit update destroy]
 
+    def index
+      @q = Bulletin.ransack(params[:q])
+      @bulletins = Bulletin.all.published.order(created_at: :desc).page params[:page]
+    end
+
     def new
       @bulletin = Bulletin.new
     end
@@ -30,6 +35,11 @@ module Web
     def moderate
       @bulletin = Bulletin.find_by(id: params[:id]).moderate!
       redirect_to profile_path
+    end
+
+    def search
+      index
+      render :index
     end
 
     protected

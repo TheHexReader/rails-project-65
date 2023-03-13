@@ -11,3 +11,7 @@
 for i in 1..5 do
   Category.create!(name: "Category №#{i}")
 end
+
+for _ in 0..100 do
+  Bulletin.create!(title: Faker::Book.title, description: Faker::Lorem.sentence, category_id: Category.all.sample.id, user_id: User.first.id, aasm_state: "published")
+end

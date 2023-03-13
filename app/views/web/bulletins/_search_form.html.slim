@@ -1,0 +1,8 @@
+.card.border-dark.shadow.p-3.w-75.m-5
+  h4.card-title.mb-4.mt-1.d-flex.align-items-center.justify-content-center.m-2
+    = search_form_for @q, url: search_bulletins_path, html: { method: :post } do |f|
+      .form-group
+        = f.label t('title')
+        = f.search_field :title, label: false
+      .form-group.d-flex.align-items-center.justify-content-center.m-2
+        = f.submit t('submit'), class: 'btn btn-primary'

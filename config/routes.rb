@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'web/home#index'
+  root to: 'web/bulletins#index'
 
   post 'auth/:provider', to: 'web/auth#request', as: :auth_request
   get 'auth/:provider/callback', to: 'web/auth#callback', as: :callback_auth
@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   delete 'auth/sign_out', to: 'web/auth#destroy', as: :sign_out
 
   scope module: :web do
-    resources :bulletins, only: %i[show new create delete]
+    resources :bulletins, only: %i[show new create delete] do
+      collection do
+        match 'search' => 'bulletins#search', via: %i[get post], as: :search
+      end
+    end
 
     post 'bulletins/:id/archive', to: 'bulletins#archive', as: :archive_bulletin
     post 'bulletins/:id/moderate', to: 'bulletins#moderate', as: :moderate_bulletin

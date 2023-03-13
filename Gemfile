@@ -81,8 +81,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 
-  gem 'faker', '~> 3.0'
 end
+gem 'faker', '~> 3.0'
 
 gem 'rollbar', '~> 3.3'
 
@@ -98,3 +98,6 @@ gem "simple_form", "~> 5.2"
 gem "pundit", "~> 2.3"
 
 gem "aasm", "~> 5.5"
+
+gem "kaminari", "~> 1.2"
+gem "ransack", "~> 4.0"
