@@ -4,7 +4,7 @@ module Web
 
     def index
       @q = Bulletin.ransack(params[:q])
-      @bulletins = @q.result.published.order(created_at: :desc).page params[:page]
+      @bulletins = @q.published.order(created_at: :desc).page params[:page]
     end
 
     def new
@@ -35,11 +35,6 @@ module Web
     def moderate
       @bulletin = Bulletin.find_by(id: params[:id]).moderate!
       redirect_to profile_path
-    end
-
-    def search
-      index
-      render :index
     end
 
     protected

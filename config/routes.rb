@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   scope module: :web do
     resources :bulletins, only: %i[show new create delete] do
       collection do
-        match 'search' => 'bulletins#search', via: %i[get post], as: :search
+        post 'search' => 'bulletins#index', as: :search
       end
     end
 
