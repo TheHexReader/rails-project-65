@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resources :bulletins, only: %i[show new create edit update delete index] do
-      post 'archive', to: 'bulletins#archive', as: :archive
-      post 'moderate', to: 'bulletins#moderate', as: :moderate
+      member do
+        patch :archive
+        patch :moderate
+      end
     end
 
     scope :admin, module: :admin, as: :admin do
