@@ -5,7 +5,14 @@ module Web
   class ProfileController < ApplicationController
     def index
       @user = User.find_by(id: session[:user_id])
-      @bulletins = @user.bulletins.order(created_at: :desc)
+
+      @q = @user.bulletins.ransack(params[:q])
+      @bulletins = @q.result.includes(:category).order(created_at: :desc)
     end
+
+    # def search
+    #   index
+    #   render :index
+    # end
   end
 end

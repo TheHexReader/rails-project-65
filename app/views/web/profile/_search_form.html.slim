@@ -1,6 +1,6 @@
 .card.shadow.w-100  
   h4.card-title.mb-4.mt-1.m-2
-    = search_form_for @q do |f|
+    = search_form_for @q, url: profile_path do |f|
       .row.form-group.row-sm
         .col-sm-4
           = f.label t('title')

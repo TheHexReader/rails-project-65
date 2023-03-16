@@ -5,7 +5,8 @@ module Web
     # Admin Bulletins Controller
     class BulletinsController < ApplicationController
       def index
-        @bulletins = Bulletin.all.order(created_at: :desc)
+        @q = Bulletin.ransack(params[:q])
+        @bulletins = @q.result.includes(:category).order(created_at: :desc)
       end
 
       def new
@@ -67,6 +68,11 @@ module Web
       def reject
         @bulletin = Bulletin.find_by(id: params[:bulletin_id]).reject!
         redirect_to admin_bulletins_path
+      end
+
+      def search
+        index
+        render :index
       end
 
       protected
