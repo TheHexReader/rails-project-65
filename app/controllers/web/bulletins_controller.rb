@@ -44,12 +44,12 @@ module Web
     end
 
     def archive
-      @bulletin = Bulletin.find_by(id: params[:bulletin_id]).archive!
+      @bulletin = Bulletin.find_by(id: params[:id]).archive!
       redirect_to profile_path
     end
 
     def moderate
-      @bulletin = Bulletin.find_by(id: params[:bulletin_id]).moderate!
+      @bulletin = Bulletin.find_by(id: params[:id]).moderate!
       redirect_to profile_path
     end
 

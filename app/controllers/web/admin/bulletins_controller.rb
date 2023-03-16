@@ -48,22 +48,22 @@ module Web
       end
 
       def archive
-        @bulletin = Bulletin.find_by(id: params[:bulletin_id]).archive!
+        @bulletin = Bulletin.find_by(id: params[:id]).archive!
         redirect_to admin_bulletins_path
       end
 
       def moderate
-        @bulletin = Bulletin.find_by(id: params[:bulletin_id]).moderate!
+        @bulletin = Bulletin.find_by(id: params[:id]).moderate!
         redirect_to admin_bulletins_path
       end
 
       def publish
-        @bulletin = Bulletin.find_by(id: params[:bulletin_id]).publish!
+        @bulletin = Bulletin.find_by(id: params[:id]).publish!
         redirect_to admin_bulletins_path
       end
 
       def reject
-        @bulletin = Bulletin.find_by(id: params[:bulletin_id]).reject!
+        @bulletin = Bulletin.find_by(id: params[:id]).reject!
         redirect_to admin_bulletins_path
       end
 

@@ -18,11 +18,14 @@ Rails.application.routes.draw do
       resources :categories, :users
 
       resources :bulletins do
-        post 'archive', to: 'bulletins#archive', as: :archive
-        post 'moderate', to: 'bulletins#moderate', as: :moderate
-        post 'reject', to: 'bulletins#reject', as: :reject
-        post 'publish', to: 'bulletins#publish', as: :publish
+        member do
+          patch :publish
+          patch :archive
+          patch :reject
+          patch :moderate
+        end
       end
+
     end
   end
 
