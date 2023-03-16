@@ -15,24 +15,22 @@ module Web
 
       def create
         @bulletin = Bulletin.create(permitted_params)
-        if @bulletin.save
-          flash[:notice] = t('success')
-          redirect_to admin_bulletin_path
-        else
-          flash[:notice] = t('failure')
-          redirect_to admin_bulletin_path
-        end
+        flash[:notice] = if @bulletin.save
+                           t('success')
+                         else
+                           t('failure')
+                         end
+        redirect_to admin_bulletin_path
       end
 
       def destroy
         @bulletin = Bulletin.find_by(params[:id])
-        if @bulletin.delete
-          flash[:notice] = t('success')
-          redirect_to admin_bulletins_path
-        else
-          flash[:notice] = t('failure')
-          redirect_to admin_bulletins_path
-        end
+        flash[:notice] = if @bulletin.delete
+                           t('success')
+                         else
+                           t('failure')
+                         end
+        redirect_to admin_bulletins_path
       end
 
       def edit
@@ -41,13 +39,12 @@ module Web
 
       def update
         @bulletin = Bulletin.find(params[:id])
-        if @bulletin.update(permitted_params)
-          flash[:notice] = t('success')
-          redirect_to admin_bulletin_path
-        else
-          flash[:notice] = t('failure')
-          redirect_to admin_bulletin_path
-        end
+        flash[:notice] = if @bulletin.update(permitted_params)
+                           t('success')
+                         else
+                           t('failure')
+                         end
+        redirect_to admin_bulletin_path
       end
 
       def archive

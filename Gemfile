@@ -80,7 +80,6 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-
 end
 gem 'faker', '~> 3.0'
 
@@ -93,11 +92,11 @@ gem 'slim-rails', '~> 3.5'
 gem 'omniauth-github', '~> 2.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
-gem "simple_form", "~> 5.2"
+gem 'simple_form', '~> 5.2'
 
-gem "pundit", "~> 2.3"
+gem 'pundit', '~> 2.3'
 
-gem "aasm", "~> 5.5"
+gem 'aasm', '~> 5.5'
 
-gem "kaminari", "~> 1.2"
-gem "ransack", "~> 4.0"
+gem 'kaminari', '~> 1.2'
+gem 'ransack', '~> 4.0'

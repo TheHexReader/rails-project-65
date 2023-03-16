@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Web
   class BulletinsController < ApplicationController
     before_action :check_if_user_authorized, only: %i[create new edit update destroy]
@@ -14,13 +16,12 @@ module Web
     def create
       @bulletin = User.find_by(id: session[:user_id]).bulletins.build(bulletin_params)
 
-      if @bulletin.save
-        flash[:notice] = t('success')
-        redirect_to root_path
-      else
-        flash[:notice] = t('fail')
-        redirect_to root_path
-      end
+      flash[:notice] = if @bulletin.save
+                         t('success')
+                       else
+                         t('fail')
+                       end
+      redirect_to root_path
     end
 
     def show

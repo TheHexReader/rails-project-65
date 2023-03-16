@@ -14,24 +14,22 @@ module Web
 
       def create
         @user = User.create(permitted_params)
-        if @user.save
-          flash[:notice] = t('success')
-          redirect_to admin_user_path
-        else
-          flash[:notice] = t('failure')
-          redirect_to admin_user_path
-        end
+        flash[:notice] = if @user.save
+                           t('success')
+                         else
+                           t('failure')
+                         end
+        redirect_to admin_user_path
       end
 
       def destroy
         @user = User.find_by(params[:id])
-        if @user.delete
-          flash[:notice] = t('success')
-          redirect_to admin_user_path
-        else
-          flash[:notice] = t('failure')
-          redirect_to admin_user_path
-        end
+        flash[:notice] = if @user.delete
+                           t('success')
+                         else
+                           t('failure')
+                         end
+        redirect_to admin_user_path
       end
 
       def edit
@@ -40,13 +38,12 @@ module Web
 
       def update
         @user = User.find(params[:id])
-        if @user.update(permitted_params)
-          flash[:notice] = t('success')
-          redirect_to admin_user_path
-        else
-          flash[:notice] = t('failure')
-          redirect_to admin_user_path
-        end
+        flash[:notice] = if @user.update(permitted_params)
+                           t('success')
+                         else
+                           t('failure')
+                         end
+        redirect_to admin_user_path
       end
 
       protected

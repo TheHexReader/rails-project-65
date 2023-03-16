@@ -14,24 +14,22 @@ module Web
 
       def create
         @category = Category.create(permitted_params)
-        if @category.save
-          flash[:notice] = t('success')
-          redirect_to admin_categories_path
-        else
-          flash[:notice] = t('failure')
-          redirect_to admin_categories_path
-        end
+        flash[:notice] = if @category.save
+                           t('success')
+                         else
+                           t('failure')
+                         end
+        redirect_to admin_categories_path
       end
 
       def destroy
         @category = Category.find_by(params[:id])
-        if @category.delete
-          flash[:notice] = t('success')
-          redirect_to admin_categories_path
-        else
-          flash[:notice] = t('failure')
-          redirect_to admin_categories_path
-        end
+        flash[:notice] = if @category.delete
+                           t('success')
+                         else
+                           t('failure')
+                         end
+        redirect_to admin_categories_path
       end
 
       def edit
@@ -40,13 +38,12 @@ module Web
 
       def update
         @category = Category.find(params[:id])
-        if @category.update(permitted_params)
-          flash[:notice] = t('success')
-          redirect_to admin_categories_path
-        else
-          flash[:notice] = t('failure')
-          redirect_to admin_categories_path
-        end
+        flash[:notice] = if @category.update(permitted_params)
+                           t('success')
+                         else
+                           t('failure')
+                         end
+        redirect_to admin_categories_path
       end
 
       protected
