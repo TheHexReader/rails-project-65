@@ -1,8 +1,10 @@
-.card.border-dark.shadow.p-3.w-75.m-5
-  h4.card-title.mb-4.mt-1.d-flex.align-items-center.justify-content-center.m-2
-    = search_form_for @q, data: { turbo: false }, url: search_bulletins_path, html: { method: :post } do |f|
-      .form-group
-        = f.label t('title')
-        = f.input :title, label: false
-      .form-group.d-flex.align-items-center.justify-content-center.m-2
-        = f.submit t('submit'), class: 'btn btn-primary'
+.card.shadow.w-100  
+  h4.card-title.mb-4.mt-1.m-2
+    = search_form_for @q do |f|
+      .row.form-group.row-sm
+        .col-sm-4
+          = f.input :title_cont, label: false, placeholder: t('title')
+        .col-sm-4
+          = f.input :name_in, collection: @categories, label: false, placeholder: t('category')
+        .col-sm-4
+          = f.submit t('submit'), class: 'btn btn-primary'

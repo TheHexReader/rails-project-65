@@ -34,11 +34,11 @@ table.table.table-striped.table-hover.mb-5
           .me-1 = link_to t('show'), bulletin, class: 'btn btn-primary'
 
           - if bulletin.draft?
-            .me-1 = button_to t('moderate'), admin_moderate_bulletin_path(bulletin), method: :post, class: 'btn btn-warning'
+            .me-1 = button_to t('moderate'), admin_bulletin_moderate_path(bulletin), method: :post, class: 'btn btn-warning'
 
           - if bulletin.under_moderation?
-            .me-1 = button_to t('reject'), admin_reject_bulletin_path(bulletin), method: :post, class: 'btn btn-danger'
-            .me-1 = button_to t('publish'), admin_publish_bulletin_path(bulletin), method: :post, class: 'btn btn-success'
+            .me-1 = button_to t('reject'), admin_bulletin_reject_path(bulletin), method: :post, class: 'btn btn-danger'
+            .me-1 = button_to t('publish'), admin_bulletin_publish_path(bulletin), method: :post, class: 'btn btn-success'
 
           - unless bulletin.archived?
-            .me-1 = button_to t('archive'), admin_archive_bulletin_path(bulletin), method: :post, class: 'btn btn-warning'
+            .me-1 = button_to t('archive'), admin_bulletin_archive_path(bulletin), method: :post, class: 'btn btn-warning'

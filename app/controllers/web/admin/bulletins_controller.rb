@@ -5,7 +5,7 @@ module Web
     # Admin Bulletins Controller
     class BulletinsController < ApplicationController
       def index
-        @bulletins = Bulletin.all
+        @bulletins = Bulletin.all.order(created_at: :desc)
       end
 
       def new
@@ -50,22 +50,22 @@ module Web
       end
 
       def archive
-        @bulletin = Bulletin.find_by(id: params[:id]).archive!
+        @bulletin = Bulletin.find_by(id: params[:bulletin_id]).archive!
         redirect_to admin_bulletins_path
       end
 
       def moderate
-        @bulletin = Bulletin.find_by(id: params[:id]).moderate!
+        @bulletin = Bulletin.find_by(id: params[:bulletin_id]).moderate!
         redirect_to admin_bulletins_path
       end
 
       def publish
-        @bulletin = Bulletin.find_by(id: params[:id]).publish!
+        @bulletin = Bulletin.find_by(id: params[:bulletin_id]).publish!
         redirect_to admin_bulletins_path
       end
 
       def reject
-        @bulletin = Bulletin.find_by(id: params[:id]).reject!
+        @bulletin = Bulletin.find_by(id: params[:bulletin_id]).reject!
         redirect_to admin_bulletins_path
       end
 

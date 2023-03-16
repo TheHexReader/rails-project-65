@@ -4,7 +4,8 @@ module Web
 
     def index
       @q = Bulletin.ransack(params[:q])
-      @bulletins = @q.published.order(created_at: :desc).page params[:page]
+      @bulletins = @q.result.published.order(created_at: :desc).page params[:page]
+      @categories = Category.all
     end
 
     def new
@@ -28,13 +29,18 @@ module Web
     end
 
     def archive
-      @bulletin = Bulletin.find_by(id: params[:id]).archive!
+      @bulletin = Bulletin.find_by(id: params[:bulletin_id]).archive!
       redirect_to profile_path
     end
 
     def moderate
-      @bulletin = Bulletin.find_by(id: params[:id]).moderate!
+      @bulletin = Bulletin.find_by(id: params[:bulletin_id]).moderate!
       redirect_to profile_path
+    end
+
+    def search
+      index
+      render :index
     end
 
     protected
@@ -44,10 +50,10 @@ module Web
     end
 
     def check_if_user_authorized
-      if session[:user_id].nil?
-        flash[:notice] = t('must_be_authorized')
-        redirect_to root_path
-      end
+      return unless session[:user_id].nil?
+
+      flash[:notice] = t('must_be_authorized')
+      redirect_to root_path
     end
   end
 end
