@@ -28,7 +28,7 @@ table.table.table-striped.table-hover.mb-5
         td = bulletin.category.name
         td = bulletin.created_at
         td = bulletin.updated_at
-        td = t(bulletin.aasm_state)
+        td = t(bulletin.status)
         td.d-flex
           .me-1 = link_to t('show'), bulletin, class: 'btn btn-primary'
 

@@ -2,6 +2,6 @@
 
 class AddAasmStateToBulletins < ActiveRecord::Migration[7.0]
   def change
-    add_column :bulletins, :aasm_state, :string
+    add_column :bulletins, :status, :string
   end
 end
