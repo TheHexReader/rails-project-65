@@ -3,7 +3,9 @@
 one:
   title: Bulletin 1
   description: Description of bulletin 1
+  state: draft
 
 two:
   title: Bulletin 2
   description: Description of bulletin 2
+  state: published
