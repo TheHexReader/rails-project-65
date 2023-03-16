@@ -24,6 +24,21 @@ module Web
       redirect_to root_path
     end
 
+    def edit
+      @bulletin = User.find_by(id: session[:user_id]).bulletins.find(params[:id], state: :draft)
+    end
+
+    def update
+      @bulletin = User.find_by(id: session[:user_id]).bulletins.find(params[:id], state: :draft)
+
+      if @bulletin.update(bulletin_params)
+        redirect_to @bulletin, notice: t('success')
+      else
+        render :edit
+        flash[:notice] = t('failure')
+      end
+    end
+
     def show
       @bulletin = Bulletin.find_by(id: params[:id])
     end

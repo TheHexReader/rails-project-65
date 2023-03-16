@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete 'auth/sign_out', to: 'web/auth#destroy', as: :sign_out
 
   scope module: :web do
-    resources :bulletins, only: %i[show new create delete index] do
+    resources :bulletins, only: %i[show new create edit update delete index] do
       post 'archive', to: 'bulletins#archive', as: :archive
       post 'moderate', to: 'bulletins#moderate', as: :moderate
     end
