@@ -25,11 +25,11 @@ module Web
     end
 
     def edit
-      @bulletin = User.find_by(id: session[:user_id]).bulletins.find(params[:id], state: :draft)
+      @bulletin = User.find_by(id: session[:user_id]).bulletins.find(params[:id])
     end
 
     def update
-      @bulletin = User.find_by(id: session[:user_id]).bulletins.find(params[:id], state: :draft)
+      @bulletin = User.find_by(id: session[:user_id]).bulletins.find(params[:id])
 
       if @bulletin.update(bulletin_params)
         redirect_to @bulletin, notice: t('success')
