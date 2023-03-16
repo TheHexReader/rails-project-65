@@ -32,7 +32,7 @@ ru:
   bulletin_user: "Создал: %{user}"
   created_at: Созданно в
   updated_at: Обновленно в
-  status: Статус
+  state: Статус
   draft: Черновик
   under_moderation: На модерации
   published: Опубликованно

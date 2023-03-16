@@ -3,7 +3,7 @@
 class Bulletin < ApplicationRecord
   include AASM
 
-  aasm.attribute_name :status
+  aasm.attribute_name :state
     aasm do
       state :draft, initial: true
       state :under_moderation, :published, :rejected, :archived
@@ -33,7 +33,7 @@ class Bulletin < ApplicationRecord
   paginates_per 30
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[status category_id created_at description id title updated_at user_id]
+    %w[state category_id created_at description id title updated_at user_id]
   end
 
   def self.ransackable_associations(_auth_object = nil)

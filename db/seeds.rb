@@ -14,5 +14,5 @@ end
 
 101.times do |_|
   Bulletin.create!(title: Faker::Book.title, description: Faker::Lorem.sentence, category_id: Category.all.sample.id,
-                   user_id: User.first.id, status: 'published')
+                   user_id: User.first.id, state: 'published')
 end

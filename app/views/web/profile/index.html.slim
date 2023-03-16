@@ -17,7 +17,7 @@ table.table.table-striped.table-hover.mb-5
       th{ scope: :col } = t('category')
       th{ scope: :col } = t('created_at')
       th{ scope: :col } = t('updated_at')
-      th{ scope: :col } = t('status')
+      th{ scope: :col } = t('state')
       th
 
   tbody
@@ -28,7 +28,7 @@ table.table.table-striped.table-hover.mb-5
         td = bulletin.category.name
         td = bulletin.created_at
         td = bulletin.updated_at
-        td = t(bulletin.status)
+        td = t(bulletin.state)
         td.d-flex
           .me-1 = link_to t('show'), bulletin, class: 'btn btn-primary'
 
