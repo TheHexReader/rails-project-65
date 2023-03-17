@@ -27,7 +27,6 @@ Rails.application.routes.draw do
           patch :moderate
         end
       end
-
     end
   end
 
