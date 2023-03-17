@@ -101,4 +101,4 @@ gem 'aasm', '~> 5.5'
 gem 'kaminari', '~> 1.2'
 gem 'ransack', '~> 4.0'
 
-gem "slim_lint", "~> 0.24.0"
+gem 'slim_lint', '~> 0.24.0'
