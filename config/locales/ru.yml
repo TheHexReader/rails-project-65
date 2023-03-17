@@ -54,3 +54,4 @@ ru:
   reject: Отказать
   submit: Подтвердить
   category_name: "Название категории: %{name}"
+  new_category: Новая категория
