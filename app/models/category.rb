@@ -6,4 +6,6 @@ class Category < ApplicationRecord
   def self.ransackable_attributes(_auth_object = nil)
     %w[created_at id name updated_at]
   end
+
+  validates :name, presence: true
 end

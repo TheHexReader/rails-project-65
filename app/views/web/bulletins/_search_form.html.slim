@@ -2,14 +2,17 @@
   h4.card-title.mb-4.mt-1.m-2
     = search_form_for @q do |f|
       .row.form-group.row-sm
-        .col-sm-4
+        .col-sm-3
           = f.label t('title')
           br
           = f.input :title_cont, label: false, placeholder: t('title')
-        .col-sm-4
+        .col-sm-3
           = f.label t('category')
           br
           = f.select :category_id_eq, options_from_collection_for_select(Category.all, :id, :name, @q.category_id_eq), { :include_blank => true }, label: false, class: 'w-100'
-        .col-sm-4
+        .col-sm-3
           br
           = f.submit t('submit'), class: 'btn btn-primary w-100'
+        .col-sm-3
+          br
+          = link_to 'Reset', url_for, class: 'btn btn-outline-primary w-100'

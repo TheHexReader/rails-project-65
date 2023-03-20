@@ -4,6 +4,8 @@ module Web
   module Admin
     # Admin Bulletins Controller
     class BulletinsController < ApplicationController
+      before_action :check_if_user_authorized
+
       def index
         @q = Bulletin.ransack(params[:q])
         @bulletins = @q.result.includes(:category).order(created_at: :desc)
@@ -18,7 +20,7 @@ module Web
         flash[:notice] = if @bulletin.save
                            t('success')
                          else
-                           t('failure')
+                           t('fail')
                          end
         redirect_to admin_bulletin_path
       end
@@ -28,7 +30,7 @@ module Web
         flash[:notice] = if @bulletin.delete
                            t('success')
                          else
-                           t('failure')
+                           t('fail')
                          end
         redirect_to admin_bulletins_path
       end
@@ -42,7 +44,7 @@ module Web
         flash[:notice] = if @bulletin.update(permitted_params)
                            t('success')
                          else
-                           t('failure')
+                           t('fail')
                          end
         redirect_to admin_bulletin_path
       end
@@ -76,6 +78,14 @@ module Web
 
       def permitted_params
         params.require(:bulletin).permit(:name)
+      end
+
+      def check_if_user_authorized
+        unless User.find_by(id: session[:user_id]).admin?
+          flash[:notice] = t('must_be_authorized')
+          redirect_to root_path
+          return
+        end
       end
     end
   end

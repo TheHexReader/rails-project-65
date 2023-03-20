@@ -40,7 +40,6 @@ class Bulletin < ApplicationRecord
     %w[category image_attachment image_blob user]
   end
 
-  # validates :image, attached: true,
-  #                   content_type: %i[png jpg jpeg],
-  #                   size: { less_than: 5.megabytes }
+  validates :title, presence: true 
+  validates :image, presence: true
 end

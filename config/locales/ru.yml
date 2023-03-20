@@ -1,4 +1,15 @@
 ru:
+  activerecord:
+    errors:
+      models:
+        bulletin:
+          attributes:
+            category:
+              required: Требуется указать категорию
+            title:
+              blank: Требуется указать название
+            image:
+              blank: Требуется указать изображение
   title: Название
   title_placeholder: Название объявления
   description: Описание
@@ -47,7 +58,7 @@ ru:
   show: Показать
   delete: Удалить
   success: Успешно
-  failure: Ошибка
+  fail: Ошибка
   archive: Архивировать
   moderate: Отправить на модерацию
   publish: Опубликовать
@@ -56,3 +67,4 @@ ru:
   category_name: "Название категории: %{name}"
   new_category: Новая категория
   bulletin-board: Доска объявлений
+  must_be_authorized: Требуется войти в аккаунт

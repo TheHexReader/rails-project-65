@@ -16,12 +16,15 @@ module Web
     def create
       @bulletin = User.find_by(id: session[:user_id]).bulletins.build(bulletin_params)
 
-      flash[:notice] = if @bulletin.save
-                         t('success')
-                       else
-                         t('fail')
-                       end
-      redirect_to root_path
+      if @bulletin.save
+        flash[:notice] = t('success')
+        redirect_to root_path
+      else
+        @bulletin.errors.full_messages.each do |message|
+          flash[:notice] = message
+        end
+        redirect_to new_bulletin_path
+      end
     end
 
     def edit
@@ -34,13 +37,21 @@ module Web
       if @bulletin.update(bulletin_params)
         redirect_to @bulletin, notice: t('success')
       else
-        render :edit
-        flash[:notice] = t('failure')
+        @bulletin.errors.full_messages.each do |message|
+          flash[:notice] = message
+        end
+        redirect_to edit_bulletin_path(@bulletin)
       end
     end
 
     def show
       @bulletin = Bulletin.find_by(id: params[:id])
+      
+      unless session[:user_id] == @bulletin.user_id || @bulletin.published? || @bulletin.admin?
+        redirect_to root_path
+        flash[:notice] = t('must_be_authorized')
+        return
+      end
     end
 
     def archive
